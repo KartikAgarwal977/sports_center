@@ -1,12 +1,8 @@
 import { Fragment, useContext, useState } from "react";
 import { Disclosure, Menu, Transition, Switch } from "@headlessui/react";
-import {
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
-import Logo from "../../assets/images/logo.png"
-import { useLocation } from "react-router-dom";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
+import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
-import React from "react";
 
 const isloggedinuser = !!localStorage.getItem("authToken");
 const userNavigation = [
@@ -16,18 +12,20 @@ const userNavigation = [
           name: "SignOut",
           href: "/logout",
         },
-      {
-        name: "ChangePassword", href: "/changePassword"
-      },
+        {
+          name: "ChangePassword",
+          href: "/changePassword",
+        },
       ]
     : [
         {
           name: "Signin",
           href: "/signin",
         },
-      {
-        name: "Signup", href: "/signup"
-      },
+        {
+          name: "Signup",
+          href: "/signup",
+        },
       ],
 ];
 
@@ -37,7 +35,6 @@ const classNames = (...classes: string[]): string =>
 const Navbar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const [enabled, setEnabled] = useState(theme === "dark");
-  const { pathname } = useLocation();
 
   const toggleTheme = () => {
     let newTheme = "";
@@ -58,7 +55,7 @@ const Navbar = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <img className="h-20" src={Logo} alt="Sports Center" />
+                  <img className="h-20 rounded-full border-2 border-transparent transition-colors" src={Logo} alt="Sports Center" />
                 </div>
               </div>
               <div className="hidden md:block">

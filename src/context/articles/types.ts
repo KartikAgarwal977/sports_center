@@ -1,10 +1,10 @@
 export type Team = {
     id: number;
-    Tname: string;
+    name: string;
 }
 export type SportDetails = {
     id: number;
-    Spname: string
+    name: string
 }
 export type articleState = {
     articleData: ArticleData[];

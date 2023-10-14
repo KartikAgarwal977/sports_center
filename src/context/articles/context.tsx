@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { articleReducer, initialState } from "./reducer";
 import { articleDispatch, articleState } from "./types";
 
@@ -16,5 +16,7 @@ export const ArticleProvider: React.FC<React.PropsWithChildren> = ({
             </ArticleDispatchContext.Provider>
         </ArticleStateContext.Provider>
         
-    )
-}
+        )
+    }
+export const useArticleState = () => useContext(ArticleStateContext);
+export const useArticleDispatch = () => useContext(ArticleDispatchContext);
