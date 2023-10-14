@@ -22,7 +22,7 @@ const SignupForm: React.FC = () => {
         method: "Post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          user_name: userName,
+          name: userName,
           email: userEmail,
           password: userPassword,
         }),
@@ -33,7 +33,7 @@ const SignupForm: React.FC = () => {
       const data = await response.json();
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("userData", JSON.stringify(data.user));
-      navigate("/account");
+      navigate("/dashboard");
       console.log("sign-up successful");
     } catch (error) {
       console.error("sign-up failed", error);
