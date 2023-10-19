@@ -28,7 +28,7 @@ export enum articleAvailableAction {
 }
 export type articleActions = 
     | { type: articleAvailableAction.FETCH_ARTICLE_REQUEST }
-    | { type: articleAvailableAction.FETCH_ARTICLE_SUCCESSFUL, payload: ArticleData }
+    | { type: articleAvailableAction.FETCH_ARTICLE_SUCCESSFUL, payload: ArticleData[] }
     | { type: articleAvailableAction.FETCH_ARTICLE_FAILURE, payload: string };
 
 export type articleDispatch = React.Dispatch<articleActions>

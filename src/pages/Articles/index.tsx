@@ -1,5 +1,4 @@
 import ArticleList from "./ArticleList"
-
 const Articles = () => {
     
     return (

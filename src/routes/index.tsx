@@ -5,6 +5,7 @@ import Signin from "../pages/signin"
 import FrameLayout from "../layout/frame"
 import Logout from "../pages/logout"
 import Articles from "../pages/Articles"
+import Matches from "../pages/matches"
 const router = createBrowserRouter([
     {
         path: "/signup",
@@ -23,8 +24,10 @@ const router = createBrowserRouter([
             {index: true, element: <Navigate to="/dashboard" replace />},
             {
                 path: "dashboard",
-                element: <Articles/>
-            }
+                element: (
+                    <><Matches /><Articles /></>)
+            },
+            
         ]
     },
 

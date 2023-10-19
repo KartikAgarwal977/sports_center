@@ -4,7 +4,7 @@ import { useArticleState } from "../../context/articles/context";
 export default function ArticleListItems() {
     const state: any = useArticleState();
     const { articleData, isLoading, isError, errorMessage } = state;
-    console.log(articleData)
+    // console.log(articleData)
 
     if (articleData.length === 0 && isLoading) {
         return <div>Loading...</div>;
@@ -23,9 +23,11 @@ export default function ArticleListItems() {
                     <div className="text-gray-900 font-bold text-xl mb-2">{article.title}</div>
                     <p className="text-gray-700 text-base">{article.summary}</p>
                     <p className="text-gray-700 font-bold ">{new Date(article.date).toUTCString().split("", 16)}</p>
+                    <a href={`/article/${article.id}`} className="text-blue-700 font-bold">read more...</a>
                   </div>
                 </div>
-                <img className="h-48 lg:h-auto rg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={article.thumbnail} title="Thumbnail" style={{float: 'right', width: '100px', height: '100px'}}/>
+                <img className="h-48 lg:h-auto rg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={article.thumbnail} title="Thumbnail" style={{ float: 'right', width: '100px', height: '100px' }}
+                />
               </Link>
             ))}
         </>

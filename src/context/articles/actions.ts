@@ -15,9 +15,9 @@ export const fetchArticles = async(
         if (!response.ok) {
             throw new Error("Failed to Fetch Articles")
         }
-        console.log(response.status)
+        // console.log(response.status)
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         dispatch({type: articleAvailableAction.FETCH_ARTICLE_SUCCESSFUL, payload: data })
     } catch (error) {
         dispatch({type: articleAvailableAction.FETCH_ARTICLE_FAILURE, payload: "Unable to Load Articles"})
