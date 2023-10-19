@@ -1,5 +1,3 @@
-
-import React from "react"
 import Navbar from "./navibar"
 import { Outlet } from "react-router-dom"
 
