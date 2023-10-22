@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 import { useArticleState } from "../../context/articles/context";
-import { Transition } from "@headlessui/react";
-import { Fragment } from "react";
-
 export default function ArticleListItems() {
     const state: any = useArticleState();
     const { articleData, isLoading, isError, errorMessage } = state;

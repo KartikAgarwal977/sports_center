@@ -8,7 +8,7 @@ const ArticleDetails = () => {
   const { id } = useParams();
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  let [data, setData] = useState<infoarticle>({});
+  const [data, setData] = useState<infoarticle>();
   const fetchArticleData = async (id: string) => {
     const response = await fetch(`${API_ENDPOINT}/articles/${id}`, {
       method: "GET",
@@ -16,7 +16,7 @@ const ArticleDetails = () => {
         "Content-Type": "application/json",
       },
     });
-    data = await response.json();
+    const data: infoarticle = await response.json();
     console.log(data);
     setData(data);
   };
@@ -27,9 +27,10 @@ const ArticleDetails = () => {
   useEffect(() => {
     if (id) fetchArticleData(id);
   }, [id]);
-  const { thumbnail, content, teams, title, date } = data;
-  return (
-    <>
+    if (data) {
+    
+        return (
+            <>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -40,7 +41,7 @@ const ArticleDetails = () => {
             leave="ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-          >
+            >
             <div className="fixed inset-0 bg-black bg-opacity-25" />
           </Transition.Child>
           <div className="fixed inset-0 overflow-y-auto">
@@ -53,16 +54,16 @@ const ArticleDetails = () => {
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              >
+                >
                 <Dialog.Panel
                   className={`w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
-                >
+                  >
                   <Dialog.Title
                     as="h2"
                     className="text-lg font-medium leading-6 text-gray-900"
-                  >
+                    >
                     <div className="grid grid-cols-5 gap-2">
-                      <div className="text-2xl font-bold col-span-4">{title}</div>
+                      <div className="text-2xl font-bold col-span-4">{data.title}</div>
                       <div>
                         <button
                           onClick={closeModal}
@@ -77,20 +78,20 @@ const ArticleDetails = () => {
                   <div className="mt-2">
                     <img
                       className="w-400 border rounded-md py-2 px-3 my-4"
-                      src={thumbnail}
+                      src={data.thumbnail}
                       alt="Thumbnail"
                     />
                     <div>
                       <span className="text-sm text-blue-700">Date :</span>{" "}
-                      {new Date(date).toUTCString().split("", 16)}
+                      {new Date(data.date).toUTCString().split("", 16)}
                     </div>
                     <ul>
-                      {teams?.map((team, index) => (
+                      {data.teams?.map((team, index) => (
                         <li key={index}>{team.name}</li>
                       ))}
                     </ul>
                     <div className="text-sm mt-2 text-gray-700 dark:text-slate-400">
-                      {content}
+                      {data.content}
                     </div>
                   </div>
                 </Dialog.Panel>
@@ -101,5 +102,6 @@ const ArticleDetails = () => {
       </Transition>
     </>
   );
+}
 };
 export default ArticleDetails;
