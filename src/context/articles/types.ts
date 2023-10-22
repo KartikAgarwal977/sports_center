@@ -21,6 +21,16 @@ export type ArticleData = {
     summary: string;
     teams: Team[];
 }
+export type infoarticle = {
+    id: number;
+    title: string;
+    summary: string;
+    thumbnail: string;
+    sport: SportDetails;
+    date: Date;
+    content: string;
+    teams: Team[];
+}
 export enum articleAvailableAction {
     FETCH_ARTICLE_REQUEST = "FETCH_ARTICLE_REQUEST",
     FETCH_ARTICLE_SUCCESSFUL = 'FETCH_ARTICLE_SUCCESSFUL',

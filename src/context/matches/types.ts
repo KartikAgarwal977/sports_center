@@ -1,3 +1,5 @@
+import { Team } from "../articles/types";
+
 export type matchData = {
     id: number;
     name: string;
@@ -11,6 +13,22 @@ export interface MatchesState {
     isError: boolean;
     errorMessage: string;
 }
+export interface liveScore {
+    id: number;
+    isRunning: boolean;
+    name: string;
+    location: string;
+    startsAt: Date;
+    endsAt: Date;
+    score: Score;
+    teams: Team[];
+    sportName: string;
+    playingTeam: number;
+    story: string;
+}
+export interface Score {
+    [key: string]: string;
+} 
 export enum matchAvailableAction {
     FETCH_MATCH_REQUEST = "FETCH_MATCH_REQUEST",
     FETCH_MATCH_SUCCESSFUL = 'FETCH_MATCH_SUCCESSFUL',
