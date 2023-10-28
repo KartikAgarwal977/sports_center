@@ -5,22 +5,24 @@ import { useContext } from "react";
 import { ThemeContext } from "./context/theme";
 import { ArticleProvider } from "./context/articles/context";
 import { MatchProvider } from "./context/matches/context";
+import { TeamProvider } from "./context/Teams/context";
 
 function App() {
   const { theme } = useContext(ThemeContext);
   return (
     <>
       <div
-        className={`h-screen w-full mx-auto py-2 ${
+        className={`w-full py-2 ${
           theme === "dark" ? "dark" : ""
         } dark:bg-slate-700`}
       >
-        {theme}
-        <MatchProvider>
-          <ArticleProvider>
-            <RouterProvider router={router} />
-          </ArticleProvider>
-        </MatchProvider>
+        <TeamProvider>
+          <MatchProvider>
+            <ArticleProvider>
+              <RouterProvider router={router} />
+            </ArticleProvider>
+          </MatchProvider>
+        </TeamProvider>
       </div>
     </>
   );

@@ -7,3 +7,7 @@
 .wrapper{
     display:grid;
   }
+body {
+    font-family: 'Nunito', sans-serif;
+    background:#f2f6fa ;
+}
