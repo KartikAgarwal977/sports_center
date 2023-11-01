@@ -2,7 +2,7 @@ import ArticleList from "./ArticleList";
 const Articles = () => {
     return (
       <>
-        <div>
+        <div className="dark:text-slate-500 dark:bg-slate-700">
           <h1 className="text-2xl font-medium tracking-tight text-slate-700 dark:text-slate-300">
             Trending News
           </h1>

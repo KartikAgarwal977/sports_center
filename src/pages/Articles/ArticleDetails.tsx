@@ -17,7 +17,7 @@ const ArticleDetails = () => {
       },
     });
     const data: infoarticle = await response.json();
-    console.log(data);
+    // console.log(data);
     setData(data);
   };
   function closeModal() {

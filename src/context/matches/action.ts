@@ -14,7 +14,7 @@ export const fetchMatches = async (dispatch: matchesDispatch) => {
         )
         if (!response.ok) throw new Error("Failed to load");
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         dispatch({ type: matchAvailableAction.FETCH_MATCH_SUCCESSFUL, payload: data.matches })
 
     } catch (error) {

@@ -16,7 +16,7 @@ const SportView = (prop: propState) => {
       },
     });
     const data: liveScore = await response.json();
-    console.log(data);
+    // console.log(data);
     setData(data);
   };
   useEffect(() => {

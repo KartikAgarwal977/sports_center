@@ -11,7 +11,7 @@ interface Sports {
 
 const ArticleList: React.FC = () => {
     const dispatchArticle = useArticleDispatch();
-    const [sportsData, setSportsData] = useState<Sports[]>([]); // For sports data
+    const [sportsData, setSportsData] = useState<Sports[]>([]); 
     const [selectedSport, setSelectedSport] = useState<string>("All");
 
     const fetchSport = async () => {
@@ -23,7 +23,7 @@ const ArticleList: React.FC = () => {
       });
       const responseData = await response.json();
       const sports = responseData.sports;
-      console.log(sports);
+    //   console.log(sports);
       setSportsData(sports); 
     };
 

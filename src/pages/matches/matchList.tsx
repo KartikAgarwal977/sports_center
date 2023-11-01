@@ -10,7 +10,7 @@ const MatchList: React.FC = () => {
     }, [])
     const state: any = useMatchState();
     const { matches, isLoading, isError, errorMessage } = state;
-    console.log(matches, `is in match`)
+    // console.log(matches, `is in match`)
     if (matches.length === 0 && isLoading) {
         return (<button
             type="button"

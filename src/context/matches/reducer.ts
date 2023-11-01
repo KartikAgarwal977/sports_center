@@ -16,7 +16,6 @@ export const matchReducer: Reducer<MatchesState, matchesActions> = (
         case matchAvailableAction.FETCH_MATCH_REQUEST:
             return { ...state, isLoading: true, }
         case matchAvailableAction.FETCH_MATCH_SUCCESSFUL:
-            console.log(action.payload)
             return { ...state, isLoading: false, matches: action.payload}
         case matchAvailableAction.FETCH_MATCH_FAILURE:
             return { ...state, isLoading: false, isError: true, errorMessage: action.payload }
