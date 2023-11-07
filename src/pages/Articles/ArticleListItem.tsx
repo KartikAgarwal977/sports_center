@@ -58,7 +58,10 @@ const ArticleListItems = (props: PropState) => {
     return <h1>{errorMessage}</h1>;
   }
   console.log(preference, 'is the preference')
-  if (preference !== null && props.sportName === "Prefered Article") {
+  if ( preference !== null &&
+    props.sportName === "Prefered Article" &&
+    preference.Ssports !== undefined &&
+    preference.Steams !== undefined) {
     console.log(preference.Ssports, 'is the preference sports')
     const filteredArticles = articleData.filter((article: any) => {
       return preference.Ssports.includes(article.sport.name) || preference.Steams.includes(article.teams.name);

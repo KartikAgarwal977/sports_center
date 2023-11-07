@@ -1,14 +1,15 @@
-
-import  { useEffect } from "react";
-import { Navigate } from "react-router-dom"
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
-  useEffect(() => {
-    localStorage.removeItem("authToken")
-    localStorage.removeItem("userData")
-  }, [])
-  window.location.reload();
-  return (<Navigate to="/" />);
-}
+  const navigate = useNavigate();
 
-export default Logout
+  useEffect(() => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userData");
+    window.location.reload();
+    navigate("/");
+  }, []);
+};
+
+export default Logout;
