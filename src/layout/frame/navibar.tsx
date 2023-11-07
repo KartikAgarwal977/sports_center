@@ -1,8 +1,9 @@
 import { Fragment, useContext, useState } from "react";
 import { Disclosure, Menu, Transition, Switch } from "@headlessui/react";
-import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
+import { Link } from "react-router-dom";
 
 const isloggedinuser = !!localStorage.getItem("authToken");
 const userNavigation = [
@@ -26,7 +27,8 @@ const userNavigation = [
           name: "Signup",
           href: "/signup",
         },
-      ],
+    ],
+  
 ];
 
 const classNames = (...classes: string[]): string =>
@@ -72,6 +74,9 @@ const Navbar = () => {
                 pointer-events-none inline-block h-[16px] w-[16px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                     />
                   </Switch>
+                  <div className="rounded-full mx-2 bg-white p-1 text-gray-400 hover:text-blue-600">
+                  {(isloggedinuser)?<Link to="preference" className="h-6 w-6"><UserGroupIcon className="h-6 w-6" aria-hidden="true"/></Link> : ''}
+                  </div>
                   <Menu as="div" className="relative ml-3">
                     <div>
                       <Menu.Button className="rounded-full bg-white p-1 text-gray-400 hover:text-blue-600">

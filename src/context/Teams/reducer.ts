@@ -1,10 +1,37 @@
 import { Reducer } from "react";
-import { teamActions, teamAvailableActions, teamState } from "./types";
+import { sportActions, sportAvailableActions, sportState, teamActions, teamAvailableActions, teamState } from "./types";
 export const  initialState: teamState = {
     teams: [],
     isLoading: false,
     isError: false,
     errorMessage: ""
+}
+export const sportInitialState: sportState = {
+    sports: [],
+    isLoading: false,
+    isError: false,
+    errorMessage:""
+}
+export const sportReducer: Reducer<sportState, sportActions> = (
+    state = sportInitialState, action
+) => {
+    switch (action.type) {
+        case sportAvailableActions.FETCH_SPORTS_REQUEST:
+            return { ...state, isLoading: true }
+        case sportAvailableActions.FETCH_SPORTS_SUCCESS:
+            return {
+                ...state,
+                sports: action.payload,
+                isLoading: false
+            }
+        case sportAvailableActions.FETCH_SPORTS_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                isError: true,
+                errorMessage: action.payload
+            };
+    }
 }
 export const teamReducer: Reducer<teamState, teamActions> = (
     state = initialState,

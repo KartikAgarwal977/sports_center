@@ -6,6 +6,7 @@ import Logout from "../pages/logout";
 import Articles from "../pages/Articles";
 import Matches from "../pages/matches";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
+import PreferencesArticle from "../pages/perference";
 const router = createBrowserRouter([
     {
       path: "/signup",
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
           path: "articles/:id",
           element: <ArticleDetails />,
         },
+        {
+          path: 'preference',
+          element: <PreferencesArticle />,
+        },
+        
       ],
     },
     {

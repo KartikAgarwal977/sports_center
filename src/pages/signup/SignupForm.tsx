@@ -31,7 +31,7 @@ const SignupForm: React.FC = () => {
         throw new Error("Sign-up failed");
       }
       const data = await response.json();
-      localStorage.setItem("authToken", data.token);
+      localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/dashboard");
       console.log("sign-up successful");
@@ -42,25 +42,25 @@ const SignupForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label className="block text-cyan-500 font-semibold mb-2">
+        <label className="block text-amber-500 font-semibold mb-2">
           Your Name:
         </label>
         <input
           type="text"
           id="userName"
           {...register("userName", {required: true})}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-cyan-800 focus:shadow-outline-cyan"
+          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
         />
       </div>
       <div>
-        <label className="block text-cyan-500 font-semibold mb-2">
+        <label className="block text-amber-500 font-semibold mb-2">
           Email:
         </label>
         <input
           type="email"
           id="userEmail"
           {...register("userEmail", {required: true})}
-          className="w-full border rounded-md py-2 px-3 text-cyan-500 leading-tight focus:outline-none focus:border-cyan-800 focus:shadow-outline-blue"
+          className="w-full border rounded-md py-2 px-3 text-cyan-500 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
         />
       </div>
       <div>

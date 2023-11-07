@@ -27,7 +27,8 @@ const SigninForm: React.FC = () => {
       }
       console.log("sign in successful")
       const resdata = await response.json();
-      localStorage.setItem("authToken", resdata.token);
+      console.log("this is the token", resdata.auth_token);
+      localStorage.setItem("authToken", resdata.auth_token);
       localStorage.setItem("userData", JSON.stringify(resdata.user));
       navigate("/dashboard");
       console.log("sign-in successful");
@@ -35,6 +36,7 @@ const SigninForm: React.FC = () => {
       console.error("sign-in failed", error);
     }
   };
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       

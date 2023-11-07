@@ -1,5 +1,5 @@
 import { API_ENDPOINT } from "../../config/constants"
-import { teamAvailableActions, teamsDispatch } from "./types"
+import { sportAvailableActions, sportDispatch, teamAvailableActions, teamsDispatch } from "./types"
 
 export const fetchTeam = async (dispatch: teamsDispatch) => {
     try {
@@ -13,5 +13,20 @@ export const fetchTeam = async (dispatch: teamsDispatch) => {
     }
     catch (error) {
         dispatch({ type: teamAvailableActions.FETCH_TEAM_FAILURE, payload: "unable to load" })
+        }
+}
+
+export const fetchSport = async (dispatch: sportDispatch) => {
+    try {
+        dispatch({ type: sportAvailableActions.FETCH_SPORTS_REQUEST })
+        const response = await fetch(`${API_ENDPOINT}/sports`,
+            { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+        if (!response.ok) throw new Error(await response.text())
+        const data = await response.json();
+        console.log(data)
+        dispatch({ type: sportAvailableActions.FETCH_SPORTS_SUCCESS, payload: data.sports })
+    }
+    catch (error) {
+        dispatch({ type: sportAvailableActions.FETCH_SPORTS_FAILURE, payload: "unable to load" })
         }
 }

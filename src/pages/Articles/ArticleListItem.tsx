@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useArticleState } from "../../context/articles/context";
+import fetchPreference from "../perference/fetchpreference";
 
 interface PropState {
   sportName: string;
@@ -8,7 +9,7 @@ interface PropState {
 const ArticleListItems = (props: PropState) => {
   const state: any = useArticleState();
   const { articleData, isLoading, isError, errorMessage } = state;
-
+  const sports = fetchPreference();
   if (articleData.length === 0 && isLoading) {
     return (<button
       type="button"

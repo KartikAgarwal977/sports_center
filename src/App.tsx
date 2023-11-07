@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { ThemeContext } from "./context/theme";
 import { ArticleProvider } from "./context/articles/context";
 import { MatchProvider } from "./context/matches/context";
-import { TeamProvider } from "./context/Teams/context";
+import { SportProvider, TeamProvider } from "./context/Teams/context";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -16,13 +16,15 @@ function App() {
           theme === "dark" ? "dark" : ""
         } dark:bg-slate-700`}
       >
-        <TeamProvider>
-          <MatchProvider>
-            <ArticleProvider>
-              <RouterProvider router={router} />
-            </ArticleProvider>
-          </MatchProvider>
-        </TeamProvider>
+        <SportProvider>
+          <TeamProvider>
+            <MatchProvider>
+              <ArticleProvider>
+                <RouterProvider router={router} />
+              </ArticleProvider>
+            </MatchProvider>
+          </TeamProvider>
+        </SportProvider>
       </div>
     </>
   );

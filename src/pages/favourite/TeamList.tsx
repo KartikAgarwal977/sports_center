@@ -1,55 +1,38 @@
 import { useEffect, useState } from "react";
-import { API_ENDPOINT } from "../../config/constants";
-import { Team } from "../../context/Teams/types";
 import FavArticle from "./favouriteArticle";
+import { useSportDispatch, useSportState, useTeamDispatch, useTeamState } from "../../context/Teams/context";
+import { fetchSport, fetchTeam } from "../../context/Teams/action";
 
-interface Sports {
-  id: number;
-  name: string;
-}
+
 
 const TeamList: React.FC = () => {
-  const [data, setData] = useState<Team[]>([]);
-  const [sportdata, setSportsData] = useState<Sports[]>([]);
-  const [selectedSport, setSelectedSport] = useState<number | null>(null);
   const [selectedSportName, setSelectedSportName] = useState<string | null>(
     'All'
   );
-  const [selectedTeamName, setSelectedTeamName] = useState<string | null>('All');
 
-  const fetchSport = async () => {
-    const response = await fetch(`${API_ENDPOINT}/sports`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const responseData = await response.json();
-    const sports = responseData.sports;
-    // console.log(sports);
-    setSportsData(sports);
-  };
+  const [selectedTeamName, setSelectedTeamName] = useState<string | null>('All');
+  const teamState = useTeamState();
+  const teamDispatch = useTeamDispatch();
+  const sportState = useSportState();
+  const sportDispatch = useSportDispatch();
+  const { sports } = sportState;
+  const { teams, isLoading, isError, errorMessage } = teamState;
+  if (teams.length === 0 && isLoading && sports.length === 0) {
+      <div>loading...</div>
+  }
+  if (isError) {
+      console.log(errorMessage);
+      <div>{errorMessage}</div>;
+  }
 
   useEffect(() => {
-    fetchSport();
+    fetchSport(sportDispatch);
     console.log(selectedSportName)
   }, []);
 
-  const fetchTeam = async () => {
-    const response = await fetch(`${API_ENDPOINT}/teams`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const data = await response.json();
-    // console.log(data);
-    setData(data);
-  };
 
   useEffect(() => {
-    fetchTeam();
+    fetchTeam(teamDispatch);
     console.log(selectedTeamName)
   }, []);
 
@@ -59,9 +42,8 @@ const TeamList: React.FC = () => {
       <select
         id="sport"
         name="sport"
-        value={selectedSport}
+        value={selectedSportName}
         onChange={(e) => {
-          setSelectedSport(e.target.value);
           setSelectedSportName(e.target.options[e.target.selectedIndex].text);
         }}
           >
@@ -69,8 +51,8 @@ const TeamList: React.FC = () => {
           Select a sport...
         </option>
         <option value="all">All</option>
-        {sportdata.map((sport) => {
-          return <option value={sport.id}>{sport.name}</option>;
+        {sports.map((sport) => {
+          return <option value={sport.name}>{sport.name}</option>;
         })}
       </select>
 
@@ -87,7 +69,7 @@ const TeamList: React.FC = () => {
           Select a team...
         </option>
         <option value="all">All</option>
-        {data.map((team) => {
+        {teams.map((team) => {
           return <option value={team.name}>{team.name}</option>;
         })}
       </select>
