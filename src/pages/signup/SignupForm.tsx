@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { API_ENDPOINT } from "../../config/constants";
 type FormValues = {
@@ -34,6 +34,7 @@ const SignupForm: React.FC = () => {
       localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/dashboard");
+      window.location.reload();
       console.log("sign-up successful");
     } catch (error) {
       console.error("sign-up failed", error);
@@ -83,6 +84,8 @@ const SignupForm: React.FC = () => {
           Sign up
         </button>
       </div>
+      <Link to={'/signin'}>Already have a account</Link>
+      <Link to={'../'}>back to home</Link>
     </form>
   );
 };

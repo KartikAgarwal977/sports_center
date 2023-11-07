@@ -3,13 +3,8 @@ import FavArticle from "./favouriteArticle";
 import { useSportDispatch, useSportState, useTeamDispatch, useTeamState } from "../../context/Teams/context";
 import { fetchSport, fetchTeam } from "../../context/Teams/action";
 
-
-
 const TeamList: React.FC = () => {
-  const [selectedSportName, setSelectedSportName] = useState<string | null>(
-    'All'
-  );
-
+  const [selectedSportName, setSelectedSportName] = useState<string | null>('All');
   const [selectedTeamName, setSelectedTeamName] = useState<string | null>('All');
   const teamState = useTeamState();
   const teamDispatch = useTeamDispatch();
@@ -17,24 +12,24 @@ const TeamList: React.FC = () => {
   const sportDispatch = useSportDispatch();
   const { sports } = sportState;
   const { teams, isLoading, isError, errorMessage } = teamState;
-  if (teams.length === 0 && isLoading && sports.length === 0) {
-      <div>loading...</div>
-  }
-  if (isError) {
-      console.log(errorMessage);
-      <div>{errorMessage}</div>;
-  }
-
+  
   useEffect(() => {
     fetchSport(sportDispatch);
     console.log(selectedSportName)
   }, []);
-
-
+  
   useEffect(() => {
     fetchTeam(teamDispatch);
     console.log(selectedTeamName)
   }, []);
+  
+    if (teams.length === 0 && isLoading && sports.length === 0) {
+        return <div>Loading...</div>
+    }
+    if (isError) {
+        console.log(errorMessage);
+        return <div>{errorMessage}</div>;
+    }
 
   return (
     <div>
@@ -42,11 +37,11 @@ const TeamList: React.FC = () => {
       <select
         id="sport"
         name="sport"
-        value={selectedSportName}
+        value={selectedSportName || ''}
         onChange={(e) => {
           setSelectedSportName(e.target.options[e.target.selectedIndex].text);
         }}
-          >
+      >
         <option value="" disabled hidden>
           Select a sport...
         </option>
@@ -60,7 +55,7 @@ const TeamList: React.FC = () => {
       <select
         id="team"
         name="team"
-        value={selectedTeamName}
+        value={selectedTeamName || ''}
         onChange={(e) => {
             setSelectedTeamName(e.target.options[e.target.selectedIndex].text);
         }}
@@ -73,7 +68,7 @@ const TeamList: React.FC = () => {
           return <option value={team.name}>{team.name}</option>;
         })}
       </select>
-      <FavArticle sportName={selectedSportName} teamName={selectedTeamName} />
+      <FavArticle sportName={selectedSportName || 'All'} teamName={selectedTeamName || 'All'} />
     </div>
   );
 };

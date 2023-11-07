@@ -7,8 +7,8 @@ const Logout = () => {
     localStorage.removeItem("authToken")
     localStorage.removeItem("userData")
   }, [])
-  
-  return <Navigate to="/" />;
+  window.location.reload();
+  return (<Navigate to="/" />);
 }
 
 export default Logout

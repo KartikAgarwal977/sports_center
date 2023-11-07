@@ -33,14 +33,14 @@ const PreferencesArticle = () => {
   if (teams.length == 0 && isLoading && sports.length == 0)
     return <div>Loading...</div>;
   if (isError) return <div>{errorMessage}</div>;
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const selectedTeams = Array.from(event.target.elements)
-      .filter((element) => element.checked && element.name == 'team')
-          .map((element) => element.value);
+      .filter((element: any) => element.checked && element.name == 'team')
+          .map((element: any) => element.value);
       const selectedSportName = Array.from(event.target.elements)
-          .filter((element) => element.checked && element.name == 'sport')
-          .map((element) => element.value);
+          .filter((element: any) => element.checked && element.name == 'sport')
+          .map((element: any) => element.value);
       console.log(selectedTeams);
       console.log(selectedSportName);
       updatePreference(selectedTeams, selectedSportName);

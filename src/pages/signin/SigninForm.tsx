@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { API_ENDPOINT } from "../../config/constants";
 type FormValues = {
@@ -31,6 +31,7 @@ const SigninForm: React.FC = () => {
       localStorage.setItem("authToken", resdata.auth_token);
       localStorage.setItem("userData", JSON.stringify(resdata.user));
       navigate("/dashboard");
+      window.location.reload();
       console.log("sign-in successful");
     } catch (error) {
       console.error("sign-in failed", error);
@@ -71,6 +72,8 @@ const SigninForm: React.FC = () => {
           Sign in
         </button>
       </div>
+      <Link to={'/signup'} >Not have a account</Link>
+      <Link to={'../'}>back to home</Link>
     </form>
   );
 };
