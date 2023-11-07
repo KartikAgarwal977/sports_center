@@ -69,29 +69,29 @@ const ArticleListItems = (props: PropState) => {
     console.log('filtered', filteredArticles);
     return (
       <>
-        <div className="scroll-smooth max-h-[500px] overflow-y-scroll">
+        <div className="scroll-smooth max-h-[725px] overflow-y-scroll bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         {filteredArticles.length > 0 ? (
           filteredArticles.map((article: any) => (
             <Link
               key={article.id}
               to={`articles/${article.id}`}
-              className="block p-6 bg-white border border-gray-200 rounded-lg shadow w-full lg:max-w-full lg:flex"
+              className="block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow w-full lg:max-w-full lg:flex"
             >
               <div className="p-4 flex flex-col leading-normal">
                 <div className="mb-8">
-                  <p className="text-sm font-bold text-gray-600 flex">
+                  <p className="text-sm font-bold text-amber-500 dark:text-amber-300 flex">
                     {article.sport.name}
                   </p>
-                  <div className="text-gray-900 font-bold text-xl mb-2">
+                  <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">
                     {article.title}
                   </div>
-                  <p className="text-gray-700 text-base">{article.summary}</p>
-                  <p className="text-gray-700 font-bold">
+                  <p className="text-gray-700 dark:text-gray-300 text-base">{article.summary}</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-bold">
                     {new Date(article.date).toUTCString().split("", 16)}
                   </p>
                   <Link
                     to={`articles/${article.id}`}
-                    className="text-blue-700 font-bold"
+                    className="text-amber-700 dark:text-amber-300 font-bold"
                   >
                     read more...
                   </Link>
@@ -106,41 +106,41 @@ const ArticleListItems = (props: PropState) => {
             </Link>
           ))
         ) : (
-            <div className="text-gray-700 font-bold text-xl bg-white">No articles found</div>
+            <div className="text-gray-700 dark:text-gray-300 font-bold text-xl bg-white dark:bg-gray-900">No articles found</div>
         )}
       </div>
       </>
     )
-  }
+  }  
   else if (props.sportName !== "All") {
     const filteredArticles = articleData.filter(
       (article: any) => article.sport.name === props.sportName
     );
-
+  
     return (
-      <div className="scroll-smooth max-h-[500px] overflow-y-scroll">
+      <div className="scroll-smooth max-h-[725px] overflow-y-scroll bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         {filteredArticles.length > 0 ? (
           filteredArticles.map((article: any) => (
             <Link
               key={article.id}
               to={`articles/${article.id}`}
-              className="block p-6 bg-white border border-gray-200 rounded-lg shadow w-full lg:max-w-full lg:flex"
+              className="block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow w-full lg:max-w-full lg:flex"
             >
               <div className="p-4 flex flex-col leading-normal">
                 <div className="mb-8">
-                  <p className="text-sm font-bold text-gray-600 flex">
+                  <p className="text-sm font-bold text-amber-500 dark:text-amber-300 flex">
                     {article.sport.name}
                   </p>
-                  <div className="text-gray-900 font-bold text-xl mb-2">
+                  <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">
                     {article.title}
                   </div>
-                  <p className="text-gray-700 text-base">{article.summary}</p>
-                  <p className="text-gray-700 font-bold">
+                  <p className="text-gray-700 dark:text-gray-300 text-base">{article.summary}</p>
+                  <p className="text-gray-700 dark:text-gray-300 font-bold">
                     {new Date(article.date).toUTCString().split("", 16)}
                   </p>
                   <Link
                     to={`articles/${article.id}`}
-                    className="text-blue-700 font-bold"
+                    className="text-amber-700 dark:text-amber-300 font-bold"
                   >
                     read more...
                   </Link>
@@ -155,34 +155,34 @@ const ArticleListItems = (props: PropState) => {
             </Link>
           ))
         ) : (
-            <div className="text-gray-700 font-bold text-xl bg-white">No articles found</div>
+            <div className="text-gray-700 dark:text-gray-300 font-bold text-xl bg-white dark:bg-gray-900">No articles found</div>
         )}
       </div>
     );
-  } else {
+  }  else {
     return (
-      <div className="scroll-smooth max-h-[500px] overflow-y-scroll">
+      <div className="scroll-smooth max-h-[725px] overflow-y-scroll bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
         {articleData.map((article: any) => (
           <Link
             key={article.id}
             to={`articles/${article.id}`}
-            className="block p-6 bg-white border border-gray-200 rounded-lg shadow w-full lg:max-w-full lg:flex"
+            className="block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow w-full lg:max-w-full lg:flex"
           >
             <div className="p-4 flex flex-col leading-normal">
               <div className="mb-8">
-                <p className="text-sm font-bold text-gray-600 flex">
+                <p className="text-sm font-bold text-amber-500 dark:text-amber-300 flex">
                   {article.sport.name}
                 </p>
-                <div className="text-gray-900 font-bold text-xl mb-2">
+                <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">
                   {article.title}
                 </div>
-                <p className="text-gray-700 text-base">{article.summary}</p>
-                <p className="text-gray-700 font-bold">
+                <p className="text-gray-700 dark:text-gray-300 text-base">{article.summary}</p>
+                <p className="text-gray-700 dark:text-gray-300 font-bold">
                   {new Date(article.date).toUTCString().split("", 16)}
                 </p>
                 <Link
                   to={`articles/${article.id}`}
-                  className="text-blue-700 font-bold"
+                  className="text-amber-700 dark:text-amber-300 font-bold"
                 >
                   read more...
                 </Link>
@@ -198,7 +198,7 @@ const ArticleListItems = (props: PropState) => {
         ))}
       </div>
     );
-  }
+  }  
 };
 
 export default ArticleListItems;

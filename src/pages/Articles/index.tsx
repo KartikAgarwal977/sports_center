@@ -1,15 +1,17 @@
 import ArticleList from "./ArticleList";
 const Articles = () => {
-    return (
-      <>
-        <div className="dark:text-slate-500 dark:bg-slate-700">
-          <h1 className="text-2xl font-medium tracking-tight text-slate-700 dark:text-slate-300">
-            Trending News
-          </h1>
+  return (
+    <>
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
+        <h1 className="text-2xl font-medium tracking-tight text-amber-500 dark:text-amber-300">
+          Trending News
+        </h1>
+        <div>
+          <ArticleList />
         </div>
-        <ArticleList />
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+};
 
 export default Articles;

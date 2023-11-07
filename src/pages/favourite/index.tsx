@@ -2,8 +2,8 @@ import TeamList from "./TeamList";
 
 const Favourites = () => {
     return (
-        <div className="bg-gray-300 dark:text-slate-500 dark:bg-slate-700">
-            <h1 className="w-full text-gray-700 font-bold dark:text-slate-500 text-2xl">Favourites</h1>
+        <div className="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <h1 className="w-full text-amber-500 dark:text-amber-300 font-bold text-2xl">Favourites</h1>
             <TeamList/>
         </div>
     )

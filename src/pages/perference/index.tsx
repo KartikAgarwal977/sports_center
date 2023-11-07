@@ -83,10 +83,10 @@ const PreferencesArticle = () => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
                 <div className="fixed inset-0 flex items-center justify-center">
-                  <Dialog.Panel className="bg-amber-500 rounded-lg p-6 max-h-96 max-w-96 overflow-auto">
+                  <Dialog.Panel className="bg-amber-500 dark:bg-gray-800 rounded-lg p-6 max-h-96 max-w-96 overflow-auto">
                     <Dialog.Title
                       as="h3"
-                      className="text-2xl font-bold text-center text-slate-900"
+                      className="text-2xl font-bold text-center text-black dark:text-gray-300"
                     >
                       Preferences
                     </Dialog.Title>
@@ -145,13 +145,13 @@ const PreferencesArticle = () => {
                       </div>
                       <button
                         type="submit"
-                        className="mt-4 px-4 py-2 bg-white border-1 text-amber-500 rounded hover:bg-amber-200 transition-colors col-span-2"
+                        className="mt-4 px-4 py-2 bg-white dark:bg-gray-800 border-1 text-amber-500 dark:text-amber-300 rounded hover:bg-amber-200 dark:hover:bg-gray-700 transition-colors col-span-2"
                       >
                         Submit
                       </button>
                       <button
                         onClick={closeModal}
-                        className="w-full py-2 bg-white mt-8 border-1 shadow-md hover:shadow hover:bg-amber-200 col-span-2"
+                        className="w-full py-2 bg-white dark:bg-gray-800 mt-8 border-1 shadow-md hover:shadow hover:bg-amber-200 dark:hover:bg-gray-700 col-span-2"
                       >
                         Cancel
                       </button>
@@ -164,6 +164,6 @@ const PreferencesArticle = () => {
         </Dialog>
       </Transition>
     </>
-  );
+  );  
 };
 export default PreferencesArticle;

@@ -68,44 +68,45 @@ const FavArticle = (props: PropState) => {
     }
 
     return (
-        <div className="scroll-smooth max-h-[500px] overflow-y-scroll">
-            {filteredArticles.length > 0 ? (
-                filteredArticles.map((article: any) => (
+        <div className="scroll-smooth max-h-[500px] overflow-y-scroll dark:bg-gray-800">
+          {filteredArticles.length > 0 ? (
+            filteredArticles.map((article: any) => (
+              <Link
+                key={article.id}
+                to={`articles/${article.id}`}
+                className="block p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg shadow w-full lg:max-w-full lg:flex"
+              >
+                <div className="p-4 flex flex-col leading-normal">
+                  <div className="mb-8">
+                    <p className="text-sm font-bold text-amber-600 dark:text-amber-300 flex">
+                      {article.sport.name}
+                    </p>
+                    <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">
+                      {article.title}
+                    </div>
+                    <div className="text-gray-900 dark:text-gray-100 font-bold text-xl mb-2">
+                      {article.teams.name}
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 text-base">{article.summary}</p>
+                    <p className="text-gray-700 dark:text-gray-300 font-bold">
+                      {new Date(article.date).toUTCString().split("", 16)}
+                    </p>
                     <Link
-                        key={article.id}
-                        to={`articles/${article.id}`}
-                        className="block p-6 bg-white border border-gray-200 rounded-lg shadow w-full lg:max-w-full lg:flex"
+                      to={`articles/${article.id}`}
+                      className="text-amber-700 dark:text-amber-300 font-bold"
                     >
-                        <div className="p-4 flex flex-col leading-normal">
-                            <div className="mb-8">
-                                <p className="text-sm font-bold text-gray-600 flex">
-                                    {article.sport.name}
-                                </p>
-                                <div className="text-gray-900 font-bold text-xl mb-2">
-                                    {article.title}
-                                </div>
-                                <div className="text-gray-900 font-bold text-xl mb-2">
-                                    {article.teams.name}
-                                </div>
-                                <p className="text-gray-700 text-base">{article.summary}</p>
-                                <p className="text-gray-700 font-bold">
-                                    {new Date(article.date).toUTCString().split("", 16)}
-                                </p>
-                                <Link
-                                    to={`articles/${article.id}`}
-                                    className="text-blue-700 font-bold"
-                                >
-                                    read more...
-                                </Link>
-                            </div>
-                        </div>
+                      read more...
                     </Link>
-                ))
-            ) : (
-                <div className="text-gray-700 font-bold text-xl bg-white">No articles found</div>
-            )}
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="text-gray-700 dark:text-gray-300 font-bold text-xl bg-white dark:bg-gray-900">No articles found</div>
+          )}
         </div>
-    );
+      );
+      
 }
 
 export default FavArticle;

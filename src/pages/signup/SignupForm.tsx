@@ -41,52 +41,59 @@ const SignupForm: React.FC = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label className="block text-amber-500 font-semibold mb-2">
-          Your Name:
-        </label>
-        <input
-          type="text"
-          id="userName"
-          {...register("userName", {required: true})}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
-        />
-      </div>
-      <div>
-        <label className="block text-amber-500 font-semibold mb-2">
-          Email:
-        </label>
-        <input
-          type="email"
-          id="userEmail"
-          {...register("userEmail", {required: true})}
-          className="w-full border rounded-md py-2 px-3 text-cyan-500 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
-        />
-      </div>
-      <div>
-        <label className="block text-cyan-500 font-semibold mb-2">
-          Password:
-        </label>
-        <input
-          type="password"
-          id="userPassword"
-          {...register("userPassword", {required: true})}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-cyan-800 focus:shadow-outline-blue"
-        />
-          </div>
-          {errors.userPassword && <p>This is required</p>}
-      <div>
-        <button
-          type="submit"
-          className="w-full bg-cyan-700 hover:bg-cyan-800 text-cyan-100 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4"
-        >
-          Sign up
-        </button>
-      </div>
-      <Link to={'/signin'}>Already have a account</Link>
-      <Link to={'../'}>back to home</Link>
-    </form>
+    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="mb-4">
+          <label className="block text-amber-500 font-semibold mb-2">
+            Your Name:
+          </label>
+          <input
+            type="text"
+            id="userName"
+            {...register("userName", { required: true })}
+            className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-amber-500 font-semibold mb-2">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="userEmail"
+            {...register("userEmail", { required: true })}
+            className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-amber-500 font-semibold mb-2">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="userPassword"
+            {...register("userPassword", { required: true })}
+            className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
+          />
+        </div>
+        {errors.userPassword && <p>This is required</p>}
+        <div>
+          <button
+            type="submit"
+            className="w-full bg-amber-700 hover:bg-amber-800 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4"
+          >
+            Sign up
+          </button>
+        </div>
+        <Link to={'/signin'} className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200">
+          Already have an account
+        </Link>
+        <Link to={'../'} className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200">
+          Back to home
+        </Link>
+      </form>
+    </div>
   );
+  
 };
 export default SignupForm;
