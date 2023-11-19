@@ -7,6 +7,7 @@ import Articles from "../pages/Articles";
 import Matches from "../pages/matches";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
 import PreferencesArticle from "../pages/perference";
+import ChangePassword from "../pages/PasswordChange";
 const router = createBrowserRouter([
     {
       path: "/signup",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
           path: 'preference',
           element: <PreferencesArticle />,
         },
+        {
+          path: 'changePassword',
+          element: <ChangePassword/>
+        }
         
       ],
     },
