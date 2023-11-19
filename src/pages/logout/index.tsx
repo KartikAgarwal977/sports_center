@@ -7,8 +7,8 @@ const Logout = () => {
   useEffect(() => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userData");
-    window.location.reload();
     navigate("/");
+    window.location.reload();
   }, []);
   return <div>Logging out...</div>;
 
