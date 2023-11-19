@@ -15,7 +15,7 @@ const userNavigation = [
         },
         {
           name: "ChangePassword",
-          href: "changePassword",
+          href: "/changePassword"
         },
       ]
     : [

@@ -9,43 +9,44 @@ import ArticleDetails from "../pages/Articles/ArticleDetails";
 import PreferencesArticle from "../pages/perference";
 import ChangePassword from "../pages/PasswordChange";
 const router = createBrowserRouter([
-    {
-      path: "/signup",
-      element: <Signup />,
-    },
-    {
-      path: "/signin",
-      element: <Signin />,
-    },
-    { path: "/", element: <Navigate to="/dashboard" replace /> },
-    {
-        path: "dashboard",
-        element: <>
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+  {
+    path: "/signin",
+    element: <Signin />,
+  },
+  {
+    path: "/changePassword",
+    element: <ChangePassword />,
+  },
+
+  { path: "/", element: <Navigate to="/dashboard" replace /> },
+  {
+    path: "dashboard",
+    element: (
+      <>
         <FrameLayout />
         <Matches />
         <Articles />
-        </>,
-      children: [
-        {
-          path: "articles/:id",
-          element: <ArticleDetails />,
-        },
-        {
-          path: 'preference',
-          element: <PreferencesArticle />,
-        },
-        {
-          path: 'changePassword',
-          element: <ChangePassword/>
-        }
-        
-      ],
-    },
-    {
-      path: "/logout",
-      element: <Logout />,
-    },
-  ]);
-  
-  export default router;
-  
+      </>
+    ),
+    children: [
+      {
+        path: "articles/:id",
+        element: <ArticleDetails />,
+      },
+      {
+        path: "preference",
+        element: <PreferencesArticle />,
+      },
+    ],
+  },
+  {
+    path: "/logout",
+    element: <Logout />,
+  },
+]);
+
+export default router;
