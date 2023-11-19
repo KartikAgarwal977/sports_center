@@ -1,6 +1,9 @@
 import { Fragment, useContext, useState } from "react";
 import { Disclosure, Menu, Transition, Switch } from "@headlessui/react";
-import { UserCircleIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import {
+  UserCircleIcon,
+  BookmarkSquareIcon,
+} from "@heroicons/react/24/outline";
 import Logo from "../../assets/images/logo.png";
 import { ThemeContext } from "../../context/theme";
 import { Link } from "react-router-dom";
@@ -15,7 +18,7 @@ const userNavigation = [
         },
         {
           name: "ChangePassword",
-          href: "/changePassword"
+          href: "/changePassword",
         },
       ]
     : [
@@ -41,10 +44,10 @@ const Navbar = () => {
     let newTheme = "";
     if (theme === "light") {
       newTheme = "dark";
-      localStorage.setItem('theme','dark')
+      localStorage.setItem("theme", "dark");
     } else {
       newTheme = "light";
-      localStorage.setItem('theme','light');
+      localStorage.setItem("theme", "light");
     }
     setEnabled(!enabled);
     setTheme(newTheme);
@@ -60,14 +63,18 @@ const Navbar = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
+                <div className="flex items-center flex-shrink-0">
                   <img
-                    className="h-20 rounded-full border-2 border-transparent transition-colors"
+                    className="h-20 rounded-full border-2 border-transparent transition-colors ml-4"
                     src={Logo}
                     alt="Sports Center"
                   />
+                  <h1 className="text-4xl font-serif font-bold text-center py-2 px-4 text-blue-900 dark:text-blue-500">
+                    SPORTS CENTER
+                  </h1>
                 </div>
               </div>
+
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
                   <Switch
@@ -96,18 +103,21 @@ relative inline-flex h-[24px] w-[100px] shrink-0 cursor-pointer rounded-full bor
                     </span>
                   </Switch>
 
-                  <div className="rounded-full mx-2 bg-white dark:bg-gray-800 p-1 text-gray-400 hover:text-blue-600">
-                    {isloggedinuser ? (
+                  {isloggedinuser ? (
+                    <div className="rounded-full mx-2 bg-amber dark:bg-gray-800 p-1 text-white-400 hover:text-blue-600">
                       <Link to="preference" className="h-6 w-6">
-                        <UserGroupIcon className="h-6 w-6" aria-hidden="true" />
+                        <BookmarkSquareIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
                       </Link>
-                    ) : (
-                      ""
-                    )}
-                  </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="rounded-full bg-white dark:bg-gray-800 p-1 text-gray-400 hover:text-blue-600">
+                      <Menu.Button className="rounded-full bg-amber dark:bg-gray-800 p-1 text-white-400 hover:text-blue-600">
                         <UserCircleIcon
                           className="h-6 w-6"
                           aria-hidden="true"

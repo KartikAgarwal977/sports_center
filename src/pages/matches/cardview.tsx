@@ -30,7 +30,7 @@ const SportView = (prop: propState) => {
               {data.sportName}
             </div>
             <button onClick={() => fetchMatchData(data.id)}>
-              <ArrowPathRoundedSquareIcon className="h-6 w-6 ml-5 font-bold hover:rotate-140 duration-3000 text-amber-500 dark:text-amber-300" />
+              <ArrowPathRoundedSquareIcon className="h-6 w-6 ml-5 font-bold hover:rotate-90 duration-3000 text-amber-500 dark:text-amber-300" />
             </button>
             <div className="mt-2 text-gray-600 dark:text-gray-300 uppercase text-xs font-semibold">
               {data.location}

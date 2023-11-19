@@ -76,7 +76,7 @@ const SignupForm: React.FC = () => {
             className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-amber-800 focus:shadow-outline-amber"
           />
         </div>
-        {errors.userPassword && <p>This is required</p>}
+        <div className="text-red-500 hover:text-red-800">{errors.userPassword && <p>This is required</p>}</div>
         <div>
           <button
             type="submit"
@@ -85,15 +85,20 @@ const SignupForm: React.FC = () => {
             Sign up
           </button>
         </div>
-        <Link to={'/signin'} className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200">
+        <Link
+          to={"/signin"}
+          className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200"
+        >
           Already have an account
         </Link>
-        <Link to={'../'} className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200">
+        <Link
+          to={"../"}
+          className="block w-full text-center bg-amber-100 hover:bg-amber-200 text-amber-700 font-semibold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-gray mt-4 transition duration-200"
+        >
           Back to home
         </Link>
       </form>
     </div>
   );
-  
 };
 export default SignupForm;
