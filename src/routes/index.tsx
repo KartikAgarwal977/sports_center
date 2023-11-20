@@ -8,6 +8,7 @@ import Matches from "../pages/matches";
 import ArticleDetails from "../pages/Articles/ArticleDetails";
 import PreferencesArticle from "../pages/perference";
 import ChangePassword from "../pages/PasswordChange";
+import NotFound from "../pages/notfound";
 const router = createBrowserRouter([
   {
     path: "/signup",
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <Signin />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
   {
     path: "/changePassword",
